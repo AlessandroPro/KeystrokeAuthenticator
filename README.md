@@ -11,15 +11,21 @@ Suppose you are working for one of the leading Credit Reporting agencies that ma
 Task for this lab:
 
 
-#Authentication Module  
+###Authentication Module  
 You are provided with sample keystrokes for the 5 users mentioned above. Following the way the input looks like, you will need to extend this file to about 3000 sample keystrokes for the said 5 users. All the sample files are in a .txt format. The keystroke features captured for each user are the time interval between when a key is pressed and released (referred to as Dwell time), the time interval between releasing a key and pressing the next key (referred to as Fly time), and the latencies incurred when one or two successive keys are pressed. The input in each row of the user data is the collection of values for the following five measurements:
+
+
+<img width="611" alt="screen shot 2017-01-03 at 4 03 57 pm" src="https://cloud.githubusercontent.com/assets/15040875/21623301/b63fe298-d1cf-11e6-8cfc-10247d9fd263.png">
 
 
 The threshold level % would be given as an input during the calculation of D as also described in the following section. Treat each value provided as a base 10 number.
 
 
-#Algorithm:  
+###Algorithm:  
 Divide the user data into 6 equal sets. Use the first set for the enrolment phase of your system, and the rest for the verification phase. Use the following given formula to calculate the deviation D between the target time and the monitored time for the digraphs and monographs in the data, where || denotes the absolute value, tref is the targeted or reference time and tmon is the monitored time for dwell or fly time values, Di is the set of digraphs in the sample, Mo is the set of monographs in the sample, and n is the size of the sample.
+
+
+<img width="610" alt="screen shot 2017-01-03 at 4 04 07 pm" src="https://cloud.githubusercontent.com/assets/15040875/21623306/b9ccd6e6-d1cf-11e6-8ee2-88bcfd9f4d25.png">
 
 
 To calculate the False Reject (FR) (also known as False Non-Match (FNM)) for a given user, compare each of the five verification session data of the same user against the enrolment set data by calculating the deviation for the monographs and digraphs; [in this case n = 500 for the monographs and n − 1 = 499 for the digraphs]. The value for the iterations for Di is 500 and that for Mo is 499. If D >= Thr,FR = 1 else FR = 0, where D is the deviation calculated and T hr is the value of the threshold%.
